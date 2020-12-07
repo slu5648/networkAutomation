@@ -23,9 +23,9 @@ for IP in list:
         tn.read_until(b"Password: ")
         tn.write(password.encode('ascii') + b"\n")
     tn.write(b"configure terminal\n")
-    for n in range(10, 90, 10):
-        tn.write(b"vlan " + str(n).encode('ascii') + b"\n")
-        tn.write(b"name " + vlanDict[n].encode('ascii') + b"\n")
+    for key, value in vlanDict.items():
+        tn.write(b"vlan " + str(key).encode('ascii') + b"\n")
+        tn.write(b"name " + vlanDict[value].encode('ascii') + b"\n")
     tn.write(b"end\n")
     tn.write(b"exit\n")
     print(tn.read_all().decode('ascii'))
