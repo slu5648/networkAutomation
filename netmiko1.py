@@ -15,10 +15,10 @@ config_commands = ['int loop 0', 'ip address 1.1.1.1 255.255.255.0']
 output = net_connect.send_config_set(config_commands)
 print(output)
 
-for n in range (2,21):
+for n in range(2,21):
     print("Creating VLAN " + str(n))
     config_commands = ['vlan ' + str(n), 'name Python_VLAN ' + str(n)]
-    outpu = net_connect.send_config_set(config_commands)
+    output = net_connect.send_config_set(config_commands)
     print(output)
 
 #HOST = "localhost"
