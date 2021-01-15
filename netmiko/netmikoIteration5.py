@@ -52,7 +52,6 @@ def connector(device_ip):
 user = input('Username: ')
 password = getpass.getpass()
 
-
 for device_ip in network_devices:
     try:
         connector(device_ip)
