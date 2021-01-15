@@ -1,0 +1,2 @@
+run show interface terse
+run show arp no-resolve

@@ -1,0 +1,3 @@
+do show ip interface brief
+do show ip arp
+
