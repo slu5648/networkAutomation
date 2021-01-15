@@ -14,6 +14,7 @@ for ip in ios_list:
         'username': user,
         'password': password
     }
+    print('Connecting to ' + ip)
     net_connect = ConnectHandler(**iosDevice)
     output = net_connect.send_command('show ip int brief')
     print(output)

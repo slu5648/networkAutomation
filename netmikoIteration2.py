@@ -5,16 +5,37 @@ import getpass
 
 user = input('Username: ')
 password = getpass.getpass()
-ios_list = ['172.16.0.1', '172.16.0.3', '172.16.0.5']
+ios_devices = ['172.16.0.1', '172.16.0.3', '172.16.0.5']
+junos_devices = ['172.16.0.4']
 
-for ip in ios_list:
-    iosDevice = {
+
+with open('ios_commands_file') as f:
+    ios_commands = f.read().splitlines()
+with open('junos_commands_file') as f:
+    junos_commands = f.read().splitlines()
+
+for device in ios_devices:
+    print('Connecting to ' + device)
+    device_ip = device
+    device = {
         'device_type': 'cisco_ios',
-        'ip': ip,
+        'ip': device_ip,
         'username': user,
         'password': password
     }
-    print('Connecting to ' + ip)
-    net_connect = ConnectHandler(**iosDevice)
-    output = net_connect.send_command('show ip int brief')
+    net_connect = ConnectHandler(**device)
+    output = net_connect.send_config_set(ios_commands)
+    print(output)
+
+for device in junos_devices:
+    print('Connecting to ' + device)
+    device_ip = device
+    device = {
+        'device_type': 'juniper_junos',
+        'ip': device_ip,
+        'username': user,
+        'password': password
+    }
+    net_connect = ConnectHandler(**device)
+    output = net_connect.send_config_set(junos_commands)
     print(output)
