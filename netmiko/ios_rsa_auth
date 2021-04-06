@@ -1,0 +1,13 @@
+username slu5648 privilege 15
+ip ssh pubkey-chain
+username slu5648
+key-string
+AAAAB3NzaC1yc2EAAAADAQABAAABAQDMdkunjYrHqckKVpKND3KahRAOLxEEll1S
+rVqYCmv0I1RO2cB+kflspTE3tGfxKAdVv3nEKUJw6RD6YRTVxjQng+x88ElLMgu5YIZ+0aUI
+S1hWGo+ZtwLq6WcUEpRCsAp7zNaiitqm6+eXyCs2tG2CWXY/TYaeoSgYpTsVAdSOSUczcjPS
+Mtzsg0gJrbDrii8ETpWOpwMrnNlhxi2ELWxpjId0pKJ7HuVwupYGWFDzx7OairTaHMRhLWQu
+mi1sfKRWlhj0YAhLiD0vHu8Hp6NvtZsZYUtAKiuxIX4zCB75mnkirfXQ3N1tstzDsUnmn6dE
+AgWgDyRV4qby+ImfGTRx
+exit
+exit
+exit
