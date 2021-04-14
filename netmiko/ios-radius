@@ -1,0 +1,12 @@
+aaa new-model
+aaa authentication login default group radius local
+aaa authorization exec default group radius local if-authenticated
+aaa accounting network default start-stop group radius
+aaa accounting network default start-stop group radius
+radius server piFour
+address ipv4 piFour.exposednetworking.lan auth-port 1812 acct-port 1813
+key R@D!USs3cr3t
+line vty 0 15
+privilege level 15
+transport input ssh
+

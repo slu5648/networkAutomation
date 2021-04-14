@@ -1,0 +1,5 @@
+set system name-server 172.16.0.254
+set system login user jason.copas class super-user uid 2002
+set system authentication-order [ radius ]
+set system radius-server piFour.exposednetworking.lan secret R@D!USs3cr3t
+commit
