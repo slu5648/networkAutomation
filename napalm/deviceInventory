@@ -1,0 +1,7 @@
+name,address,os,version
+s1,172.16.0.1,IOSv,15.2
+s2,172.16.0.2,IOSv,15.2
+s3,172.16.0.3,IOSv,15.2
+s4,172.16.0.4,IOSv,15.2
+vsrx1,172.16.0.5,Juniper,JUNOS 18.4R3-S5.4
+vsrx2,172.16.0.6,Juniper,JUNOS 18.4R3-S5.4
