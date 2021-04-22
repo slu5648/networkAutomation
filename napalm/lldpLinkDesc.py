@@ -17,7 +17,7 @@ def main(device):
     device.load_merge_candidate(config='lldp run')
     lldp_diffs = device.compare_config()
     if len(lldp_diffs) > 0:
-        print('lldp not enabled, turning on lldp and waiting 30 seconds to form neighborships to form')
+        print('lldp not enabled, turning on lldp and waiting 30 seconds for neighborships to form')
         device.commit_config()
         time.sleep(30)
     else:
