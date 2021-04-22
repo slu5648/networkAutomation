@@ -1,6 +1,5 @@
-import os
 import csv
-from datetime import datetime, date, time
+import json
 from getpass import getpass
 from napalm import get_network_driver
 
@@ -13,8 +12,15 @@ nxosDriver = get_network_driver('nxos')
 
 def main(device):
     device.open()
-    device_facts = device.get_lldp_neighbors()
     print("Getting facts from " + line[1] + "\n\n")
+    lldp_neighbors = device.get_lldp_neighbors()
+    lldp_detail = device.get_lldp_neighbors_detail()
+    for line in lldp_neighbors:
+        if line != 'GigabitEthernet0/0':
+            local_interface = line
+            remote_device = lldp_neighbors[line][0]['hostname']
+            config_commands = local_interface + '\ndescription' + remote_device
+
     device.close()
 
 with open('deviceInventory') as inventoryFile:
@@ -23,7 +29,3 @@ with open('deviceInventory') as inventoryFile:
         if line[2] == 'IOSv':
             device = iosDriver(line[1], username, password)
             main(device)
-        if line[2] == 'Juniper':
-            device = junosDriver(line[1], username, password)
-            main(device)
-            main(driver)
