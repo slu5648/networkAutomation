@@ -1,0 +1,14 @@
+---
+bgpNeighbors: 
+  {% for neighbor in neighbors %}
+  - {{ neighbor }}
+  {% endfor %}
+
+mgmtMembers: 
+  - 172.16.0.240
+  - 172.16.0.131
+  - 172.16.0.122
+
+networkMonitors: 
+  - 172.16.0.131
+  - 172.16.0.122
