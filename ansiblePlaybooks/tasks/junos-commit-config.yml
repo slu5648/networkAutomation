@@ -1,0 +1,4 @@
+    - name: "Committing configuration on {{ inventory_hostname  }}"
+      junos_config:
+        confirm_commit: "yes"
+

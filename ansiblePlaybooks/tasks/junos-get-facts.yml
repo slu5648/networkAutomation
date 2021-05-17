@@ -1,0 +1,4 @@
+    - name: "Getting Junos facts"
+      junos_facts:
+        gather_network_resources: 'all'
+      register: system_facts_result

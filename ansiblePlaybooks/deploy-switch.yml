@@ -1,0 +1,45 @@
+---
+- name: "Deploy Config"
+  hosts: juniper
+  gather_facts: false
+
+  vars_prompt:
+    - name: host_name
+      prompt: 'Name of the host in the inventory'
+      private: no
+    - name: gatewayIp
+      prompt: 'IP for the default gateway'
+      private: no
+    - name: mgmtIp   
+      prompt: 'IP address for the managment interface'
+      private: no
+    - name: mgmtCidr
+      prompt: 'CIDR Mask for the managment interface'
+      private: no
+    - name: siteName 
+      prompt: 'Name of the site this device will be deployed at'
+      private: no
+    - name: ansible_user
+      prompt: 'SSH Username'
+      private: no
+    - name: ansible_password
+      prompt: 'SSH Password'
+  
+  tasks:
+    - name: "Targetting {{ host_name }} to gather information"
+      include_tasks: "~/networkAutomation/playbooks/tasks/junos-get-facts.yml"
+      when: "host_name in inventory_hostname"
+
+    - name: "Targetting {{ host_name }} to build initial configuration"
+      include_tasks: "~/networkAutomation/playbooks/tasks/junos-switch-template.yml"
+      when: "host_name in inventory_hostname"
+
+    - name: "Targetting {{ host_name }} to override the current configuration"
+      include_tasks: "~/networkAutomation/playbooks/tasks/junos-push-config.yml"  
+      when: "host_name in inventory_hostname"
+
+    - name: "Targetting {{ host_name }} to confirm the configuration change"
+      include_tasks: "~/networkAutomation/playbooks/tasks/junos-commit-config.yml"
+      when: "host_name in inventory_hostname"
+
+

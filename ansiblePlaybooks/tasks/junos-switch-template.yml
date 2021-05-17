@@ -1,0 +1,5 @@
+    - name: "Building initial config template for {{ inventory_hostname }}"
+      template:
+        src: '~/networkAutomation/templates/EX-TEMPLATE.conf'
+        dest: '~/networkAutomation/configs/{{ inventory_hostname }}.initial.conf'
+

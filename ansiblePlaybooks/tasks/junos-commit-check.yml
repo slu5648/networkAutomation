@@ -1,0 +1,5 @@
+    - name: "Checking configuration for {{ inventory_hostname  }}"
+      junos_config:
+        check_commit: "yes"
+
+

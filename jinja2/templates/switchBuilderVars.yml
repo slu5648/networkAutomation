@@ -1,0 +1,19 @@
+---
+hostName: {{ device_name }}
+
+mgmtIp: {{ mgmt_ip }}
+
+mgmtCidr: {{ mgmt_cidr }}
+
+gatewayIp: {{ gateway_ip }}
+
+siteName: {{ site_name }}
+
+userInterfaces:
+  {% for interface in userInterfaces %}
+  - {{ interface }}
+  {% endfor %}
+
+aeInterfaces:
+  - ge-0/1/0
+  - ge-0/1/1

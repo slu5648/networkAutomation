@@ -1,0 +1,33 @@
+---
+- name: "PLAY 1: Capture and store network_devices configurations"
+  hosts: network_devices
+  gather_facts: false
+
+  vars_prompt:
+    - name: ansible_user
+      prompt: Username
+      private: no
+    - name: ansible_password
+      prompt: Password
+
+  tasks:
+    - name: "Looking for Juniper devices"
+      include_tasks: "~/networkAutomation/playbooks/tasks/junos-get-config.yml"
+      when: "'juniper' in group_names"
+
+    - name: "Looking for IOS devices"
+      include_tasks: "~/networkAutomation/playbooks/tasks/ios-get-config.yml"
+      when: "'cisco' in group_names"
+
+    - name: "Create ~/networkAutomation/configs/ folder if it doesn't exist"
+      file:
+        path: "~/networkAutomation/configs"
+        state: "directory"
+        mode: "0775"
+      run_once: true
+
+    - name: "Write output to file"
+      copy:
+        content: "{{ cli_result.stdout[0] }}\n"
+        dest: "~/networkAutomation/configs/{{ inventory_hostname }}.conf"
+

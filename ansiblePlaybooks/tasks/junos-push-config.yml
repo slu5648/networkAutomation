@@ -1,0 +1,6 @@
+    - name: "Overriding config for {{ inventory_hostname  }}"
+      junos_config:
+        src: "~/networkAutomation/configs/{{ inventory_hostname }}.initial.conf"
+        update: "override"
+        confirm: "2"
+

@@ -1,0 +1,4 @@
+    - name: "TASK 1: Get running-config"
+      ios_command:
+        commands: "show running-config"
+      register: cli_result

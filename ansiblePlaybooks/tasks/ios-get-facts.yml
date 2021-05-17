@@ -1,0 +1,4 @@
+    - name: "Getting IOS facts"
+      ios_facts:
+        gather_subset: "all"
+      register: system_facts_result

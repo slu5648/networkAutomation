@@ -1,0 +1,5 @@
+    - name: "Rolling back {{ inventory_hostname  }} to last commit state 'user@hostname# rollback'"
+      junos_config:
+        rollback: 0
+
+

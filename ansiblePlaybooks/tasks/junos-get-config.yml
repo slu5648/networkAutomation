@@ -1,0 +1,5 @@
+    - name: "Getting JUNOS config"
+      junos_command:
+        commands: "show configuration"
+      connection: network-cli 
+      register: cli_result
